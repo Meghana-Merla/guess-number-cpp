@@ -1,0 +1,15 @@
+# Ignore build artifacts
+*.exe
+*.out
+*.o
+*.obj
+
+# Ignore VS Code workspace-specific settings
+.vscode/*
+!.vscode/c_cpp_properties.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# Ignore user-specific settings
+*.log
+*.tmp

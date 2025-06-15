@@ -1,21 +1,41 @@
-//Generating a random number
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+
 int getRandomNumber() {
-    static bool seed_initialized = false;
-    if (!seed_initialized) {
-        std::srand(std::time(0));
-        seed_initialized = true;
-    }
-    int min=1 ;
-    int max =100;
-    int rand_number = (rand() % (max - min + 1)) + min;
-    return rand_number;
+        return rand()%100+1;
+}
+
+string answer(int original,int guess){
+        if(guess>original+10||guess<original-10){
+                return "Cold!";
+        }else if(guess==original) {
+                return "Right";
+        }else{
+                return "Hot!";
+        }
+}
+
+void run_guess(){
+        int original=getRandomNumber();
+        int guess;
+        cout<<"Enter a number between 1 to 100(both inclusive):"<<endl;
+        cin>>guess;
+        while (1){
+                string a=answer(original,guess);
+                if(a=="Right"){
+                        cout<<"Great!! You guessed it Right!!";
+                        break;
+                }else{
+                        cout<<a<<endl;
+                        cout<<"Enter other number:"<<endl;
+                        cin>>guess;
+                }
+        }
 }
 int main() {
-    cout << "Random Number: " << getRandomNumber() << endl;
-    
-    return 0;
+        srand(time(0));
+        run_guess();
+        return 0;
 }
